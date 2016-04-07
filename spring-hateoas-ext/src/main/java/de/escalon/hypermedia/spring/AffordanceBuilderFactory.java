@@ -145,10 +145,17 @@ public class AffordanceBuilderFactory implements MethodLinkBuilderFactory<Afford
 
     private List<String> getRequestParamNames(Method invokedMethod) {
         MethodParameters parameters = new MethodParameters(invokedMethod);
-        final List<MethodParameter> requestParams = parameters.getParametersWith(RequestParam.class);
+        final List<MethodParameter> requestParams = parameters.getParameters();
         List<String> params = new ArrayList<String>(requestParams.size());
         for (MethodParameter requestParam : requestParams) {
-            params.add(requestParam.getParameterName());
+            if (requestParam.hasParameterAnnotation(RequestParam.class)) {
+                params.add(requestParam.getParameterName());
+            } else if ("pageable".equals(requestParam.getParameterType().getSimpleName().toLowerCase())) {
+                // if we have a spring pageable here, add standard pageable params
+                params.add("page");
+                params.add("size");
+                params.add("sort");
+            }
         }
         return params;
     }
