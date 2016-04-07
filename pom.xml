@@ -4,7 +4,7 @@
 
     <groupId>de.escalon.hypermedia</groupId>
     <artifactId>hydra-java</artifactId>
-    <version>0.2.0-beta3-pageableMod-SNAPSHOT</version>
+    <version>0.2.0-beta3-pageableMod</version>
     <packaging>pom</packaging>
 
     <name>${project.groupId}:${project.artifactId}:${project.version}</name>
@@ -62,6 +62,7 @@
         <url>https://github.com/megglos/hydra-java</url>
         <connection>scm:git:git@github.com:megglos/hydra-java.git</connection>
         <developerConnection>scm:git:git@github.com:megglos/hydra-java.git</developerConnection>
+    <tag>hydra-java-0.2.0-beta3-pageableMod</tag>
   </scm>
 
     <modules>
